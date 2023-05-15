@@ -1,0 +1,24 @@
+t = 10
+
+for test_case in range(1,t+1):
+    n= int(input())
+    array = []
+    pail = []
+    count = 0
+    for _ in range(8):
+        array.append(list(map(str,input())))
+    for i in range(8):
+        for j in range(8-n+1):
+            for k in range(n):
+                pail.append(array[i][j+k])
+            if pail== pail[::-1]:
+                count = count + 1
+            pail = []
+    for i in range(8):
+        for j in range(8 - n + 1):
+            for k in range(n):
+                pail.append(array[j + k][i])
+            if pail == pail[::-1]:
+                count = count + 1
+            pail = []
+    print(f"#{test_case}",count)
