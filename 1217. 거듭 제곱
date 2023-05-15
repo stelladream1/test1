@@ -1,0 +1,5 @@
+
+for test_case in range(1,11):
+    n = int(input())
+    a,b = map(int,input().split())
+    print(f"#{n} {a**b}")
