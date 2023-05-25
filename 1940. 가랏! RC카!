@@ -1,0 +1,23 @@
+from collections import deque
+t = int(input())
+for test_case in range(1,t+1):
+    n = int(input())
+    array =[]
+    result = 0
+    speed = 0
+    for i in range(n):
+        try:
+            a,b = input().split()
+        except:
+            result = result + speed
+            continue
+        a = int(a)
+        if a==1:
+            speed = speed + int(b)
+        else:
+            if int(b) > speed:
+                speed = 0
+            else:
+                speed = speed - int(b)
+        result = result + speed
+    print(f"#{test_case} {result}")
