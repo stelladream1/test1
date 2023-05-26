@@ -1,0 +1,17 @@
+t = int(input())
+for i in range(1,t+1):
+    num = int(input())
+    count = 0
+    array = []
+    for j in range(num):
+        m,n = map(str,input().split())
+        array.append((m,n))
+    print(f"#{i}")
+    for p in array:
+        for k in range(int(p[1])):
+            print(p[0], end="")
+            count = count + 1
+            if count ==10:
+                print()
+                count = 0
+    print()
