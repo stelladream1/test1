@@ -1,0 +1,45 @@
+t = int(input())
+numbers = [1,2,3,4,5,6,7,8,9]
+for test_case in range(1,t+1):
+    array = []
+    num2 = []
+    num3 = []
+    result = ""
+    for _ in range(9):
+        array.append(list(map(int,input().split())))
+    for i in range(9):
+        num1= []
+        for j in range(9):
+            num1.append(array[i][j])
+        num1.sort()
+        if num1 ==numbers:
+            result = result + "1"
+        else:
+            result = result + "0"
+    for i in range(9):
+        num2 = []
+        for j in range(9):
+            num2.append(array[j][i])
+        num2.sort()
+        if num2 == numbers:
+            result = result + "1"
+        else:
+            result = result + "0"
+
+    for q in range(0,9,3):
+        for w in range(0,9,3):
+            num3 = []
+            for e in range(q, q + 3):
+                for r in range(w, w + 3):
+                    num3.append(array[e][r])
+            num3.sort()
+            if num3 == numbers:
+                result = result + "1"
+            else:
+                result = result + "0"
+
+    if result.count("0")>=1:
+        print(f"#{test_case} 0")
+    else:
+        print(f"#{test_case} 1")
+
