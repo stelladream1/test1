@@ -1,0 +1,61 @@
+from collections import deque
+t = int(input())
+q = deque()
+dx = [0,1]
+dy = [1,0]
+count = 0
+def bfs(x,y):
+    q.append((x,y))
+    visit[x][y]=1
+    global count
+    count = 0
+    while q:
+        x,y = q.popleft()
+        count = count + 1
+        nx = x + 1
+        ny = y
+        if 0<=nx<m and 0<=ny<m:
+            if graph[nx][ny]==1 and visit[nx][ny]==0:
+                visit[nx][ny] =1
+                q.append((nx,ny))
+
+def bfs2(x, y):
+    q.append((x, y))
+    visit[x][y] = 1
+    global count
+    count = 0
+    while q:
+        x, y = q.popleft()
+        count = count + 1
+        nx = x
+        ny = y + 1
+        if 0 <= nx < m and 0 <= ny < m:
+            if graph[nx][ny] == 1 and visit[nx][ny] == 0:
+                visit[nx][ny] = 1
+                q.append((nx, ny))
+
+
+for test_case in range(1,t+1):
+    m,n = map(int,input().split())
+    graph = []
+
+    result = 0
+    for _ in range(m):
+        graph.append(list(map(int,input().split())))
+
+    visit = [[0] * m for _ in range(m)]
+    for i in range(m):
+        for j in range(m):
+            if graph[i][j]==1 and visit[i][j]==0:
+                bfs(i,j)
+                if count == n:
+                    result = result + 1
+
+    visit = [[0] * m for _ in range(m)]
+    for i in range(m):
+        for j in range(m):
+            if graph[i][j]==1 and visit[i][j]==0:
+                bfs2(i,j)
+                if count == n:
+                    result = result + 1
+    print(f"#{test_case} {result}")
