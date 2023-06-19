@@ -1,0 +1,17 @@
+from collections import deque
+t = int(input())
+for i in range(1,t+1):
+    n,m = map(int,input().split())
+    result = []
+    scores = []
+    num = (n // 10)
+    score = ['A+', 'A0', 'A-', 'B+', 'B0', 'B-', 'C+', 'C0', 'C-', 'D0']
+    for k in score:
+        for _ in range(num):
+            scores.append(k)
+    score.sort()
+    for j in range(n):
+        a,b,c = map(int,input().split())
+        result.append(a*0.35 + b*0.45 + c*0.2)
+    sort_result = sorted(result,reverse=True)
+    print(f"#{i} {scores[sort_result.index(result[m-1])]}")
