@@ -1,0 +1,6 @@
+t = int(input())
+for i in range(1,t+1):
+    array= (list(map(int,input().split())))
+    result = round((sum(array) -max(array) - min(array)) / 8)
+
+    print(f"#{i} {result}")
